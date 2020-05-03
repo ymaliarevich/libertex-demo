@@ -9,8 +9,7 @@ import utils.Generator;
 import javax.ws.rs.core.Response;
 
 public class TestLogoutService extends BaseRestTest {
-    private LogoutClient logoutClient = new LogoutClient();
-
+    private final LogoutClient logoutClient = new LogoutClient();
 
     @Test
     public void testLogoutService() {
@@ -22,9 +21,10 @@ public class TestLogoutService extends BaseRestTest {
         loginRestClient.postLogin(usernameModel);
 
         Response response = logoutClient.postLogout(usernameModel);
-        Assertions.assertThat(response.getStatus()).isEqualTo(200);
+        Assertions.assertThat(response.getStatus()).as("Verify that client logged out correctly").isEqualTo(200);
     }
 
+    //I assume that logout for non login user should return error
     @Test
     public void testLogoutNonLoginUser() {
         ClientModel clientModel = Steps.createUniqueClient();
@@ -37,6 +37,7 @@ public class TestLogoutService extends BaseRestTest {
         Assertions.assertThat(response.getStatus()).isEqualTo(200);
     }
 
+    //I assume that logout for non existing user should return error
     @Test
     public void testLogoutNonExistingUser() {
 

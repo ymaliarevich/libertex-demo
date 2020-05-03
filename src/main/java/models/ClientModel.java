@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import utils.Generator;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -7,7 +8,9 @@ import java.util.Objects;
 
 @XmlRootElement
 public class ClientModel extends RestModel {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String fullName;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
 
     public String getFullName() {
