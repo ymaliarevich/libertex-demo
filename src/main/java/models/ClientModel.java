@@ -13,10 +13,6 @@ public class ClientModel extends RestModel {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String username;
 
-    public String getFullName() {
-        return fullName;
-    }
-
     public ClientModel() {
         this.fullName = Generator.getRandomString();
         this.username = Generator.getRandomString();
@@ -25,6 +21,14 @@ public class ClientModel extends RestModel {
     public ClientModel(String fullName, String username) {
         this.fullName = fullName;
         this.username = username;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     @Override
@@ -47,10 +51,6 @@ public class ClientModel extends RestModel {
                 "fullName='" + fullName + '\'' +
                 ", username='" + username + '\'' +
                 '}';
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public String getUsername() {

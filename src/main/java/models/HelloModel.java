@@ -2,7 +2,7 @@ package models;
 
 import java.util.Objects;
 
-public class HelloModel extends RestModel{
+public class HelloModel extends RestModel {
     private String resultCode;
     private String message;
 

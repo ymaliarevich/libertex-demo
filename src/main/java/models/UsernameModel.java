@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
 @XmlRootElement
-public class UsernameModel extends RestModel{
+public class UsernameModel extends RestModel {
     private String username;
 
     public UsernameModel() {

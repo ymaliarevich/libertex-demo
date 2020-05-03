@@ -5,14 +5,14 @@ import models.ClientModel;
 import javax.ws.rs.core.Response;
 
 
-public class ClientsRestClient {
+public class ClientsRestClient extends RestClient {
     private static final String PATH = "clients";
 
     public Response getClients() {
-        return new RestClient().get(PATH);
+        return get(PATH);
     }
 
     public Response postClients(ClientModel clientModel) {
-        return new RestClient().post(PATH, clientModel);
+        return post(PATH, clientModel);
     }
 }

@@ -3,14 +3,14 @@ package rest;
 
 import javax.ws.rs.core.Response;
 
-public class HelloRestClient {
+public class HelloRestClient extends RestClient {
     private static final String PATH = "hello";
 
     public Response getHello(String sessionId) {
-        return new RestClient().get(PATH, "X-Session-Id", sessionId);
+        return get(PATH, "X-Session-Id", sessionId);
     }
 
     public Response getHello() {
-        return new RestClient().get(PATH);
+        return get(PATH);
     }
 }

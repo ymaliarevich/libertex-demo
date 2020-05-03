@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyProvider {
-
     private static final Properties PROPERTIES = new Properties();
 
     static {
@@ -24,6 +23,6 @@ public class PropertyProvider {
     }
 
     public static String getProperty(String key, String defaultValue) {
-            return PROPERTIES.getProperty(key, defaultValue);
+        return PROPERTIES.getProperty(key, defaultValue);
     }
 }
