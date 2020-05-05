@@ -2,14 +2,14 @@ import models.ClientModel;
 import models.UsernameModel;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import rest.LogoutClient;
+import rest.LogoutRestClient;
 import steps.Steps;
 import utils.Generator;
 
 import javax.ws.rs.core.Response;
 
 public class TestLogoutService extends BaseRestTest {
-    private final LogoutClient logoutClient = new LogoutClient();
+    private final LogoutRestClient logoutRestClient = new LogoutRestClient();
 
     @Test
     public void testLogoutService() {
@@ -20,7 +20,7 @@ public class TestLogoutService extends BaseRestTest {
         UsernameModel usernameModel = new UsernameModel(clientModel.getUsername());
         loginRestClient.postLogin(usernameModel);
 
-        Response response = logoutClient.postLogout(usernameModel);
+        Response response = logoutRestClient.postLogout(usernameModel);
         Assertions.assertThat(response.getStatus()).as("Verify that client logged out correctly").isEqualTo(200);
     }
 
@@ -33,7 +33,7 @@ public class TestLogoutService extends BaseRestTest {
 
         UsernameModel usernameModel = new UsernameModel(clientModel.getUsername());
 
-        Response response = logoutClient.postLogout(usernameModel);
+        Response response = logoutRestClient.postLogout(usernameModel);
         Assertions.assertThat(response.getStatus()).isEqualTo(200);
     }
 
@@ -43,7 +43,7 @@ public class TestLogoutService extends BaseRestTest {
 
         UsernameModel usernameModel = new UsernameModel(Generator.getRandomString());
 
-        Response response = logoutClient.postLogout(usernameModel);
+        Response response = logoutRestClient.postLogout(usernameModel);
         Assertions.assertThat(response.getStatus()).isEqualTo(200);
     }
 }

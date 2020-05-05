@@ -2,7 +2,7 @@ import models.ClientModel;
 import models.UsernameModel;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import rest.LogoutClient;
+import rest.LogoutRestClient;
 import steps.Steps;
 import utils.Constants;
 import utils.Generator;
@@ -44,7 +44,7 @@ public class TestLoginService extends BaseRestTest {
         Response response = loginRestClient.postLogin(usernameModel);
         String oldSessionId = response.getHeaderString(Constants.SESSION_ID);
 
-        new LogoutClient().postLogout(usernameModel);
+        new LogoutRestClient().postLogout(usernameModel);
 
         response = loginRestClient.postLogin(usernameModel);
         String newSessionId = response.getHeaderString(Constants.SESSION_ID);

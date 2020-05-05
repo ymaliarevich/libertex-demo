@@ -4,7 +4,7 @@ import models.UsernameModel;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 import rest.HelloRestClient;
-import rest.LogoutClient;
+import rest.LogoutRestClient;
 import steps.Steps;
 import utils.Constants;
 import utils.Generator;
@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 
 public class TestHelloService extends BaseRestTest {
     private final HelloRestClient helloRestClient = new HelloRestClient();
-    private final LogoutClient logoutClient = new LogoutClient();
+    private final LogoutRestClient logoutRestClient = new LogoutRestClient();
 
     @Test
     public void testHelloClient() {
@@ -37,7 +37,7 @@ public class TestHelloService extends BaseRestTest {
         Assertions.assertThat(response.getStatus()).as("Verify that hello user service works correctly").isEqualTo(200);
         Assertions.assertThat(helloModel).isEqualTo(expectedHelloModel);
 
-        response = logoutClient.postLogout(usernameModel);
+        response = logoutRestClient.postLogout(usernameModel);
         Assertions.assertThat(response.getStatus()).isEqualTo(200);
     }
 
@@ -54,7 +54,7 @@ public class TestHelloService extends BaseRestTest {
 
         String sessionId = response.getHeaderString(Constants.SESSION_ID);
 
-        response = logoutClient.postLogout(usernameModel);
+        response = logoutRestClient.postLogout(usernameModel);
         Assertions.assertThat(response.getStatus()).isEqualTo(200);
 
         response = helloRestClient.getHello(sessionId);
